@@ -97,8 +97,7 @@ Clone this repository to your desired folder:
 
 
 ```sh
-  cd my-folder
-  git clone git@github.com:AJ193/vet_clinic.git
+  https://github.com/AJ193/Vet_clinic/
 ```
 
 
@@ -108,43 +107,8 @@ Install this project with:
 
 
 ```sh
-  cd vet_clinic
-  npm install
+  cd vet-clinic-database
 ```
-
-### Usage
-
-To run the project, execute the following command:
-
-```sh
-  npm start
-```
-
-
-### Run tests
-
-To run tests, run the following command:
-
-
-```sh
-  npm test
-  Press a to run all test
-```
-
-
-### Deployment
-
-You can deploy this project using:
-
-<!--
-Example:
-
-```sh
-
-```
- -->
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- AUTHORS -->
 
@@ -215,3 +179,4 @@ This project is [MIT](LICENSE) licensed.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
