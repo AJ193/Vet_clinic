@@ -29,3 +29,47 @@ VALUES
      ('Blossom', '1998-10-13', 17, TRUE, 3),
      ('Ditto', '2022-05-14', 22, TRUE, 4);
      
+     -- inserting data into owners table
+
+     INSERT INTO owners (full_name, age)
+     VALUES ('Sam Smith', 34),
+            ('Jennifer', 19),
+            ('Bob', 45),
+            ('Melody Pond', 77),
+            ('Dean Wischester', 14),
+            ('Jodie Whittaker', 38);
+
+    -- inserting data into spices table
+
+    INSERT INTO species (name)
+    VALUES ('Pokemon'),
+           ('Digimon');
+
+           -- Modifying inserted animals so it includes the species_id:
+    -- if the name ends in "mon" it will be Digimon
+UPDATE animals SET species_id = (SELECT id FROM spices WHERE name = 'Digimon') WHERE name LIKE '%mon';
+
+-- all other animals are Pokemon
+UPDATE animals SET species_id = (SELECT id FROM spices WHERE name = 'Pokemon') WHERE species_id is NULL;
+
+-- Modify your inserted animals to include owner information (owner_id):
+
+-- Sam Smith owns Agumon
+
+UPDATE animals SET owner_id = (SELECT id FROM owners WHERE full_name = 'Sam Smith' LIMIT 1) WHERE name = 'Agumon';
+
+-- Jennifer Orwell owns Gabumon and Pikachu
+
+UPDATE animals SET owner_id = (SELECT id FROM owners WHERE full_name = 'Jennifer Orwell' LIMIT 1) WHERE name = 'Gabumon' OR name = 'Pikachu';
+
+-- Bob owns Devimon and Plantmon.
+
+UPDATE animals SET owner_id = (SELECT id FROM owners WHERE full_name = 'Bob' LIMIT 1) WHERE name = 'Devimon' OR name = 'Plantom';
+
+-- Melody Pond owns Charmander, Squirtle, Blossom
+
+UPDATE animals SET owner_id = (SELECT id FROM owners WHERE full_name = 'Melody Pond' LIMIT 1) WHERE name = 'Charmander' OR name = 'Squirtle' OR name = 'Blossom';
+
+-- Dean Winchester owns Angemon and Boarmon
+
+UPDATE animals SET owner_id = (SELECT id FROM owners WHERE full_name = 'Dean Winchester' LIMIT 1) WHERE name = 'Angemon' OR name = 'Boarmon';
