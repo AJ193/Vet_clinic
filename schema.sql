@@ -11,3 +11,28 @@ CREATE TABLE animals (
 ALTER TABLE animals
 ADD
 COLUMN species VARCHAR (50);
+
+-- creating table owners
+
+CREATE TABLE owners (
+    id SERIAL PRIMARY KEY NOT NULL,
+    full_name VARCHAR(300),
+    age INTEGER
+);
+
+-- creating spice tables
+
+CREATE TABLE species (
+    id SERIAL PRIMARY KEY NOT NULL,
+    name VARCHAR(100)
+);
+
+-- removing colum spices from table animals
+
+ALTER TABLE animals DROP COLUMN species;
+-- adding column spices_id which is a foreign key reference spices table
+
+ALTER TABLE animals ADD COLUMN species_id INTEGER REFERENCES species(id);
+ -- Add column owner_id which is a foreign key referencing owners table
+
+ALTER TABLE animals ADD COLUMN owner_id BIGINT REFERENCES owners(id); 
