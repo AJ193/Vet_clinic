@@ -127,9 +127,11 @@ INNER JOIN animals ON visits.animal_id = animals.id GROUP BY animals.name ORDER 
 
 -- Who was Maisy Smith's first visit?
 
-SELECT vets.name AS vets_name, visits.date_of_visit AS date_of_visit FROM vets
-INNER JOIN visits ON vets.id = visits.vet_id WHERE vets.name = 'Maisy Smith' ORDER BY visits.date_of_visit
-LIMIT 1;
+SELECT animals.name, MIN(visits.date_of_visit) FROM animals
+JOIN visits ON animals.id=visits.animal_id
+JOIN vets ON visits.vet_id=vets.id WHERE vets.name='Maisy Smith'
+GROUP BY animals.name
+ORDER BY MIN(visits.date_of_visit) ASC LIMIT 1;
 
 -- Details for most recent visit: animal information, vet information, and date of visit.
 
